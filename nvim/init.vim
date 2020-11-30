@@ -1,7 +1,8 @@
 " Author: Brian Martinez
+" Description: Personal NeoVim configuration file
 " Contact: xangelux at gmail dot com
 
 let mapleader=' '
-source $HOME/.config/nvim/plugins.conf.vim
-source $HOME/.config/nvim/custom.conf.vim
+source ~/.config/nvim/plugins.conf.vim
+source ~/.config/nvim/custom.conf.vim
 

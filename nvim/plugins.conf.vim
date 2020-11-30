@@ -1,6 +1,7 @@
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'ghifarit53/tokyonight-vim' " Theme
+Plug 'drewtempelmeyer/palenight.vim' " Theme
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'machakann/vim-sandwich'
@@ -14,6 +15,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'Yggdroot/indentLine'
+Plug 'sheerun/vim-polyglot'
 
 " Javascript/React {{{
 " Plug 'yuezk/vim-js', { 'for': 'javascript' }
@@ -28,7 +30,9 @@ call plug#end()
 
 " Plugin Configs {{{
 set termguicolors " Some colorschemes require this to be set before
-colorscheme tokyonight
+colorscheme palenight
+set background=dark
+let g:airline_theme='palenight'
 
 " Airline {{{
 

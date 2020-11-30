@@ -22,7 +22,7 @@ set list
 " Configure how the non-visible chars will look like
 set listchars=tab:▸\ ,trail:·,eol:¬,extends:»,precedes:«,nbsp:+
 " How filler chars will be displayed
-set fillchars=diff:⣿,vert:│
+set fillchars=diff:⣿,eob:•
 " How to show a line has been broken in two
 set showbreak=↪
 " Highlight the current line
