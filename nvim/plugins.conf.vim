@@ -26,6 +26,9 @@ Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'peitalin/vim-jsx-typescript', { 'for': 'javascript' }
 " }}}
 
+" Ruby and Rails {{{
+Plug 'tpope/vim-rails'
+" }}}
 call plug#end()
 
 " Plugin Configs {{{
