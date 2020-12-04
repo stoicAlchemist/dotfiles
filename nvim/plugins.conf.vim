@@ -5,7 +5,6 @@ Plug 'drewtempelmeyer/palenight.vim' " Theme
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'machakann/vim-sandwich'
-Plug 'mhinz/vim-startify'
 Plug 'mhinz/vim-signify'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ryanoasis/vim-devicons'
@@ -45,24 +44,13 @@ if !exists('g:airline_symbols')
 endif
 let g:airline_detect_spell     = 0 " Don't display spell
 let g:airline#extensions#hunks#enabled = 0 " Don't display the hunks info
+
 " }}}
 
 " FZF {{{
 nmap <leader>f :GFiles<CR>
 nmap <leader>b :Buffers<CR>
 "}}}
-
-" Startify {{{
-nnoremap <leader>d :Startify<CR>
-" Fancy custom header
-let g:startify_custom_header = [
-  \ "  ",
-  \ '   ┏┓ ╻   ╻ ╻   ╻   ┏┳┓',
-  \ '   ┃┗┓┃   ┃┏┛   ┃   ┃┃┃',
-  \ '   ╹ ┗┛   ┗┛    ╹   ╹ ╹',
-  \ '   ',
-  \ ]
-" }}}
 
 " IndentLine {{{
 let g:indentLine_char = '│'

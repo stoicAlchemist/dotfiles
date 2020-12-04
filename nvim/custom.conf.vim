@@ -1,5 +1,6 @@
 set number
 set relativenumber
+set textwidth=100
 
 " Movement {{{
 nnoremap <C-j> <C-w>j
@@ -56,6 +57,20 @@ else
   let &t_SI = "\<Esc>]50;CursorShape=1\x7"
   let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
+
+" Fold text {{{
+
+" From https://jdhao.github.io/2019/08/16/nvim_config_folding/
+function! MyFoldText()
+    let line = getline(v:foldstart)
+    let folded_line_num = v:foldend - v:foldstart
+    let line_text = substitute(line, '^"{\+', '', 'g')
+    let fillcharcount = &textwidth - len(line_text) - len(folded_line_num)
+    return repeat('-', 2) . line_text . repeat('.', fillcharcount) . ' (' . folded_line_num . ' L)'
+endfunction
+set foldtext=MyFoldText()
+
+" }}}
 
 " }}}
 
