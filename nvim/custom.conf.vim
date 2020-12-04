@@ -13,6 +13,7 @@ inoremap kj <ESC>
 nnoremap <CR> za
 vnoremap <CR> za
 nnoremap <leader>v :vsplit $MYVIMRC<CR>
+nnoremap <leader><space> :noh<CR>
 cmap wq w
 
 " TUI {{{
