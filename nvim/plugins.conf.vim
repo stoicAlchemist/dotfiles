@@ -5,6 +5,7 @@ Plug 'drewtempelmeyer/palenight.vim' " Theme
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'machakann/vim-sandwich'
+Plug 'mhinz/vim-startify'
 Plug 'mhinz/vim-signify'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ryanoasis/vim-devicons'
@@ -52,6 +53,17 @@ nmap <leader>f :GFiles<CR>
 nmap <leader>b :Buffers<CR>
 "}}}
 
+" Startify {{{
+nnoremap <leader>d :Startify<CR>
+" Fancy custom header
+let g:startify_custom_header = [
+  \ "  ",
+  \ '   ┏┓ ╻   ╻ ╻   ╻   ┏┳┓',
+  \ '   ┃┗┓┃   ┃┏┛   ┃   ┃┃┃',
+  \ '   ╹ ┗┛   ┗┛    ╹   ╹ ╹',
+  \ '   ',
+  \ ]
+" }}}
 " IndentLine {{{
 let g:indentLine_char = '│'
 " }}}
