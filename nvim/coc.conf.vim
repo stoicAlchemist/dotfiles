@@ -171,11 +171,9 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 let g:coc_global_extensions = [
       \'coc-eslint',
-      \'coc-explorer',
       \'coc-marketplace',
       \'coc-lists',
       \'coc-solargraph'
       \]
-nnoremap <leader>t :CocCommand explorer<CR>
 
 " }}}

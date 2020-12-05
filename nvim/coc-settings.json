@@ -17,7 +17,5 @@
       "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
       "filetypes": ["go"]
     }
-  },
-  "explorer.icon.enableVimDevicons": true,
-  "explorer.file.column.indent.indentLine": true
+  }
 }

@@ -10,6 +10,10 @@ Plug 'mhinz/vim-signify'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ryanoasis/vim-devicons'
 Plug 'Raimondi/delimitMate' " Auto-close matching parens, not perfect
+Plug 'scrooloose/nerdtree', {'on':  'NERDTreeToggle'}
+Plug 'Xuyuanp/nerdtree-git-plugin', {'on':  'NERDTreeToggle'}
+Plug 'vwxyutarooo/nerdtree-devicons-syntax'
+Plug 'bryanmylee/vim-colorscheme-icons' " DevIcons color in Startify
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
@@ -55,6 +59,10 @@ nmap <leader>b :Buffers<CR>
 
 " Startify {{{
 nnoremap <leader>d :Startify<CR>
+
+" Don't change to directory of file visited throgh Startify
+let g:startify_change_to_dir = 0
+
 " Fancy custom header
 let g:startify_custom_header = [
   \ "  ",
@@ -64,6 +72,7 @@ let g:startify_custom_header = [
   \ '   ',
   \ ]
 " }}}
+
 " IndentLine {{{
 let g:indentLine_char = '│'
 " }}}
@@ -74,6 +83,42 @@ let g:javascript_plugin_jsdoc = 1
 
 " Signify {{{
 set updatetime=100
+" }}}
+" NERDTree {{{
+
+nnoremap <leader>t :NERDTreeToggle<CR>
+" Don't show list chars when on NERDTree
+autocmd FileType nerdtree setlocal nolist
+let g:NERDTreeQuitOnOpen = 1
+
+" Disable arrow icons at the left side of folders for NERDTree.
+let g:WebDevIconsUnicodeDecorateFolderNodes = v:true
+let g:WebDevIconsNerdTreeBeforeGlyphPadding = ' '
+let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
+highlight! link NERDTreeFlags NERDTreeDir
+autocmd FileType nerdtree setlocal signcolumn=no
+let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
+" }}}
+
+" DevIcons {{{
+
+    let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols = {} " needed
+    let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['.spec\.ts$'] = ''
+    let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['^package.json$'] = ''
+    let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['lock'] = ''
+    let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['^Jenkinsfile$'] = ''
+    let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['^Gemfile$'] = ''
+    let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['.*\.ru$'] = ''
+    let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['^Rakefile$'] = ''
+    let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['^README\.'] = ''
+
+    let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {} " needed
+    let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['css'] = ''
+    let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['properties'] = ''
+    let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['tgz'] = ''
+    let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['erb'] = ''
+    let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['jbuilder'] = ''
+    let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['txt'] = ''
 " }}}
 
 source $HOME/.config/nvim/coc.conf.vim
