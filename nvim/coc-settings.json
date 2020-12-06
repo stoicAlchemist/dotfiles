@@ -7,9 +7,8 @@
   "diagnostic.errorSign": "✕",
   "diagnostic.warningSign": "⚠︎",
   "diagnostic.infoSign": "•",
-  "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown", "javascript", "typescript"],
+  "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown"],
   "eslint.nodePath": "/usr/local/bin",
-  "prettier.eslintIntegration": true,
   "solargraph.diagnostics": true,
   "languageserver": {
     "golang": {

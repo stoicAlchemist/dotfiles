@@ -4,5 +4,5 @@ else
   let g:custom_vim = 1
 endif
 
-set foldmethod=marker
+setlocal foldmethod=marker
 set shiftwidth=2

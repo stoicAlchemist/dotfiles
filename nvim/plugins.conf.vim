@@ -84,6 +84,7 @@ let g:javascript_plugin_jsdoc = 1
 " Signify {{{
 set updatetime=100
 " }}}
+
 " NERDTree {{{
 
 nnoremap <leader>t :NERDTreeToggle<CR>
