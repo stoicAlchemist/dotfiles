@@ -3,7 +3,8 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'ghifarit53/tokyonight-vim' " Theme
 Plug 'drewtempelmeyer/palenight.vim' " Theme
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+" Plug 'junegunn/fzf.vim'
+Plug 'coreyja/fzf.devicon.vim' " Same as fzf.vim but with devicons, needs the devicon-lookup crate (cargo install devicon-lookup)
 Plug 'machakann/vim-sandwich'
 Plug 'mhinz/vim-startify'
 Plug 'mhinz/vim-signify'
