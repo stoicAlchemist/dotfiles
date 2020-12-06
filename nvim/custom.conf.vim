@@ -1,6 +1,5 @@
 set number
 set relativenumber
-set textwidth=100
 
 " Movement {{{
 nnoremap <C-j> <C-w>j
@@ -66,8 +65,8 @@ function! MyFoldText()
     let line = getline(v:foldstart)
     let folded_line_num = v:foldend - v:foldstart
     let line_text = substitute(line, '^"{\+', '', 'g')
-    let fillcharcount = &textwidth - len(line_text) - len(folded_line_num)
-    return repeat('-', 2) . line_text . repeat('.', fillcharcount) . ' (' . folded_line_num . ' L)'
+    let fillcharcount = &textwidth - len(line_text) - len(folded_line_num) - 5 " Random number to aling right
+    return line_text . repeat('.', fillcharcount) . ' (' . folded_line_num . ' L)'
 endfunction
 set foldtext=MyFoldText()
 
