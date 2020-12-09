@@ -5,17 +5,18 @@ Plug 'drewtempelmeyer/palenight.vim' " Theme
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " Plug 'junegunn/fzf.vim'
 Plug 'coreyja/fzf.devicon.vim' " Same as fzf.vim but with devicons, needs the devicon-lookup crate (cargo install devicon-lookup)
-Plug 'machakann/vim-sandwich'
 Plug 'mhinz/vim-startify'
 Plug 'mhinz/vim-signify'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ryanoasis/vim-devicons'
 Plug 'Raimondi/delimitMate' " Auto-close matching parens, not perfect
-Plug 'scrooloose/nerdtree', {'on':  'NERDTreeToggle'}
-Plug 'Xuyuanp/nerdtree-git-plugin', {'on':  'NERDTreeToggle'}
+Plug 'preservim/nerdtree' |
+			\ Plug 'Xuyuanp/nerdtree-git-plugin' |
+			\ Plug 'ryanoasis/vim-devicons'
 Plug 'vwxyutarooo/nerdtree-devicons-syntax'
 Plug 'bryanmylee/vim-colorscheme-icons' " DevIcons color in Startify
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
