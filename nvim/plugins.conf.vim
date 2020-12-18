@@ -18,10 +18,16 @@ Plug 'bryanmylee/vim-colorscheme-icons' " DevIcons color in Startify
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-endwise' " Help adding the correct 'closing' to a language construct
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'Yggdroot/indentLine'
 Plug 'sheerun/vim-polyglot'
+Plug 'andymass/vim-matchup' " Show off screen matches and more
+
+" Matchup {{{
+let g:matchup_matchparen_offscreen = {'method': 'popup'}
+" }}}
 
 " Javascript/React {{{
 " Plug 'yuezk/vim-js', { 'for': 'javascript' }
