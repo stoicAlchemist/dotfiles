@@ -16,6 +16,7 @@ Plug 'preservim/nerdtree' |
 Plug 'vwxyutarooo/nerdtree-devicons-syntax'
 Plug 'bryanmylee/vim-colorscheme-icons' " DevIcons color in Startify
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
