@@ -1,0 +1,18 @@
+[submodule "Tmux/.tmux/plugins/nord-tmux"]
+	path = Tmux/.tmux/plugins/nord-tmux
+	url = https://git::@github.com/arcticicestudio/nord-tmux
+[submodule "Tmux/.tmux/plugins/tmux-sensible"]
+	path = Tmux/.tmux/plugins/tmux-sensible
+	url = https://git::@github.com/tmux-plugins/tmux-sensible
+[submodule "Tmux/.tmux/plugins/tpm"]
+	path = Tmux/.tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
+[submodule "Zsh/.zsh/cd-gitroot"]
+	path = Zsh/.zsh/cd-gitroot
+	url = git@github.com:mollifier/cd-gitroot.git
+[submodule "Zsh/.zsh/zsh-autosuggestions"]
+	path = Zsh/.zsh/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions
+[submodule "Zsh/.zsh/zsh-syntax-highlighting"]
+	path = Zsh/.zsh/zsh-syntax-highlighting
+	url = git://github.com/zsh-users/zsh-syntax-highlighting.git

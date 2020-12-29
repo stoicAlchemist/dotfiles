@@ -3,8 +3,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'ghifarit53/tokyonight-vim' " Theme
 Plug 'drewtempelmeyer/palenight.vim' " Theme
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-" Plug 'junegunn/fzf.vim'
-Plug 'coreyja/fzf.devicon.vim' " Same as fzf.vim but with devicons, needs the devicon-lookup crate (cargo install devicon-lookup)
+Plug 'junegunn/fzf.vim'
 Plug 'mhinz/vim-startify'
 Plug 'mhinz/vim-signify'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -19,10 +18,16 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-endwise' " Help adding the correct 'closing' to a language construct
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'Yggdroot/indentLine'
 Plug 'sheerun/vim-polyglot'
+Plug 'andymass/vim-matchup' " Show off screen matches and more
+
+" Matchup {{{
+let g:matchup_matchparen_offscreen = {'method': 'popup'}
+" }}}
 
 " Javascript/React {{{
 " Plug 'yuezk/vim-js', { 'for': 'javascript' }
