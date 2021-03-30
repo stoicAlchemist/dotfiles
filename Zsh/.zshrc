@@ -266,6 +266,12 @@ function loadAsdf() {
   fi
 }
 
+# If there is a file called .zshcontext on your home dir, load it. This file should hold
+# custom code that should be loaded in the current computer
+if [ -r $HOME/.zshcontext ]; then
+  source $HOME/.zshcontext
+fi
+
 # For Zencoder
 export PATH="/usr/local/opt/postgresql@11/bin:$PATH"
 export PATH="/usr/local/opt/postgresql@11/bin:$PATH"

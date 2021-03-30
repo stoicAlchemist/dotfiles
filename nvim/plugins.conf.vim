@@ -24,6 +24,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'Yggdroot/indentLine'
 Plug 'sheerun/vim-polyglot'
 Plug 'andymass/vim-matchup' " Show off screen matches and more
+Plug 'vim-scripts/AnsiEsc.vim' " Colorize Ansi output (console output)
 
 " Matchup {{{
 let g:matchup_matchparen_offscreen = {'method': 'popup'}
@@ -40,6 +41,10 @@ Plug 'peitalin/vim-jsx-typescript', { 'for': 'javascript' }
 
 " Ruby and Rails {{{
 Plug 'tpope/vim-rails'
+" }}}
+
+" Elixir {{{
+Plug 'elixir-editors/vim-elixir'
 " }}}
 call plug#end()
 
