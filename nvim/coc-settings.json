@@ -10,6 +10,7 @@
   "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown"],
   "eslint.nodePath": "/usr/local/bin",
   "solargraph.diagnostics": true,
+  "elixir.pathToElixirLS": "~/.elixir-ls/release/language_server.sh",
   "languageserver": {
     "golang": {
       "command": "gopls",
