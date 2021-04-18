@@ -250,8 +250,6 @@ function chpwd() {
 
 fpath=(~/.zsh/completion $fpath)
 
-export HOMEBREW_GITHUB_API_TOKEN=68ada4d7401aa38b6235f3a6153be75293bdddad
-
 # Mac needs this after a reboot
 ssh-add -A &> /dev/null
 
