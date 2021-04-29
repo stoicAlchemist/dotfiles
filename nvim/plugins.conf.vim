@@ -1,80 +1,56 @@
-lua <<EOF
-local cmd = vim.cmd
-local o = vim.o
-local g = vim.g
-local fn = vim.fn
+call plug#begin('~/.config/nvim/plugged')
 
-cmd 'packadd paq-nvim' -- loading package manager
-local paq = require'paq-nvim'.paq -- Import module and bind `paq` function
+Plug 'ghifarit53/tokyonight-vim' " Theme
+Plug 'drewtempelmeyer/palenight.vim' " Theme
+Plug 'morhetz/gruvbox' " Theme
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'mhinz/vim-startify'
+Plug 'mhinz/vim-signify'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'Raimondi/delimitMate' " Auto-close matching parens, not perfect
+Plug 'vwxyutarooo/nerdtree-devicons-syntax'
+Plug 'bryanmylee/vim-colorscheme-icons' " DevIcons color in Startify
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-endwise' " Help adding the correct 'closing' to a language construct
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'Yggdroot/indentLine'
+Plug 'sheerun/vim-polyglot'
+Plug 'andymass/vim-matchup' " Show off screen matches and more
+Plug 'vim-scripts/AnsiEsc.vim' " Colorize Ansi output (console output)
 
-paq{'savq/paq-nvim', opt = true} -- Let Paq manage itself
-
--- Packages
-paq 'ghifarit53/tokyonight-vim' -- Theme
-paq 'drewtempelmeyer/palenight.vim' -- Theme
-paq 'morhetz/gruvbox' -- Theme
-
-paq{'junegunn/fzf', run = fn['fzf#install']}
-paq 'junegunn/fzf.vim'
-
-paq 'mhinz/vim-startify'
-paq 'mhinz/vim-signify'
-paq{'neoclide/coc.nvim', branch = 'release'}
-
-paq 'Raimondi/delimitMate' -- Auto-close matching parens, not perfect
-paq 'vwxyutarooo/nerdtree-devicons-syntax'
-paq 'bryanmylee/vim-colorscheme-icons' -- DevIcons color in Startify
-paq 'tpope/vim-commentary'
-paq 'tpope/vim-repeat'
-paq 'tpope/vim-surround'
-paq 'tpope/vim-fugitive'
-paq 'tpope/vim-endwise' -- Help adding the correct 'closing' to a language construct
-paq 'vim-airline/vim-airline'
-paq 'vim-airline/vim-airline-themes'
-paq 'Yggdroot/indentLine'
-paq 'sheerun/vim-polyglot'
-paq 'andymass/vim-matchup' -- Show off screen matches and more
-paq 'vim-scripts/AnsiEsc.vim' -- Colorize Ansi output (console output)
-
--- Javascript/React {{{
--- paq 'yuezk/vim-js'
--- paq 'HerringtonDarkholme/yats.vim'
-paq 'MaxMEllon/vim-jsx-pretty' -- Conflicts with VIM Polyglot
-paq 'leafgarland/typescript-vim' -- vim-jsx-typescript dep
-paq 'pangloss/vim-javascript'
-paq 'peitalin/vim-jsx-typescript'
--- }}}
-
--- Ruby and Rails {{{
-paq 'tpope/vim-rails'
--- }}}
-
--- Elixir {{{
-paq 'elixir-editors/vim-elixir'
--- }}}
-
--- TreeSitter {{{
-paq{'nvim-treesitter/nvim-treesitter', run = fn[':TSUpdate']}
--- }}}
-
--- Telescope {{{
-paq 'nvim-lua/popup.nvim'
-paq 'nvim-lua/plenary.nvim'
-paq 'nvim-telescope/telescope.nvim' -- fuzzy finder alternative
--- }}}
-
--- DevIcons {{{
--- Puting this before devicons to preserve order
-paq 'preservim/nerdtree'
-paq 'Xuyuanp/nerdtree-git-plugin'
-paq 'ryanoasis/vim-devicons' -- The plugins that use this need to be loaded before
---}}}
-
-EOF
+" Puting this before devicons to preserve order
+Plug 'preservim/nerdtree' |
+			\ Plug 'Xuyuanp/nerdtree-git-plugin' |
+			\ Plug 'ryanoasis/vim-devicons'
+Plug 'ryanoasis/vim-devicons' " The plugins that use this need to be loaded before
 
 " Matchup {{{
 let g:matchup_matchparen_offscreen = {'method': 'popup'}
 " }}}
+
+" Javascript/React {{{
+" Plug 'yuezk/vim-js', { 'for': 'javascript' }
+" Plug 'HerringtonDarkholme/yats.vim', { 'for': 'javascript' }
+Plug 'MaxMEllon/vim-jsx-pretty', { 'for': 'javascript' } " Conflicts with VIM Polyglot
+Plug 'leafgarland/typescript-vim', { 'for': 'javascript' } " vim-jsx-typescript dep
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'peitalin/vim-jsx-typescript', { 'for': 'javascript' }
+" }}}
+
+" Ruby and Rails {{{
+Plug 'tpope/vim-rails'
+" }}}
+
+" Elixir {{{
+Plug 'elixir-editors/vim-elixir'
+" }}}
+
+call plug#end()
 
 " Plugin Configs {{{
 set termguicolors " Some colorschemes require this to be set before
@@ -107,12 +83,12 @@ let g:startify_change_to_dir = 0
 
 " Fancy custom header
 let g:startify_custom_header = [
-      \ "  ",
-      \ '   ┏┓ ╻   ╻ ╻   ╻   ┏┳┓',
-      \ '   ┃┗┓┃   ┃┏┛   ┃   ┃┃┃',
-      \ '   ╹ ┗┛   ┗┛    ╹   ╹ ╹',
-      \ '   ',
-      \ ]
+  \ "  ",
+  \ '   ┏┓ ╻   ╻ ╻   ╻   ┏┳┓',
+  \ '   ┃┗┓┃   ┃┏┛   ┃   ┃┃┃',
+  \ '   ╹ ┗┛   ┗┛    ╹   ╹ ╹',
+  \ '   ',
+  \ ]
 " }}}
 
 " IndentLine {{{
@@ -154,23 +130,23 @@ let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
 
 " DevIcons {{{
 
-let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols = {} " needed
-let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['.spec\.ts$'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['^package.json$'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['lock'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['^Jenkinsfile$'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['^Gemfile$'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['.*\.ru$'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['^Rakefile$'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['^README\.'] = ''
+    let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols = {} " needed
+    let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['.spec\.ts$'] = ''
+    let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['^package.json$'] = ''
+    let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['lock'] = ''
+    let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['^Jenkinsfile$'] = ''
+    let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['^Gemfile$'] = ''
+    let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['.*\.ru$'] = ''
+    let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['^Rakefile$'] = ''
+    let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['^README\.'] = ''
 
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {} " needed
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['css'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['properties'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['tgz'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['erb'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['jbuilder'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['txt'] = ''
+    let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {} " needed
+    let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['css'] = ''
+    let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['properties'] = ''
+    let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['tgz'] = ''
+    let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['erb'] = ''
+    let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['jbuilder'] = ''
+    let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['txt'] = ''
 
-let g:webdevicons_enable_airline_statusline = 1
+    let g:webdevicons_enable_airline_statusline = 1
 " }}}

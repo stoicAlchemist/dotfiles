@@ -112,4 +112,3 @@ set autoread
 " So crontab works properly, disable backup and writebackup
 autocmd filetype crontab setlocal nobackup nowritebackup
 " }}}
-command! Scratch lua require('tools').makeScratch
