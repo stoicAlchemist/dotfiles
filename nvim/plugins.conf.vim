@@ -3,7 +3,6 @@ local cmd = vim.cmd
 local o = vim.o
 local g = vim.g
 local fn = vim.fn
-local set_keymap = vim.api.nvim_set_keymap
 
 cmd 'packadd paq-nvim' -- loading package manager
 local paq = require'paq-nvim'.paq -- Import module and bind `paq` function
@@ -71,57 +70,18 @@ paq 'Xuyuanp/nerdtree-git-plugin'
 paq 'ryanoasis/vim-devicons' -- The plugins that use this need to be loaded before
 --}}}
 
--- Plugin Configs {{{
-
--- Matchup {{{
-g.matchup_matchparen_offscreen = { method = 'popup'}
--- }}}
-
-o.termguicolors = true -- Some colorschemes require this to be set before
-
-cmd('colorscheme palenight')
-o.background = 'dark'
-g.airline_theme = 'palenight'
-
--- FZF {{{
-set_keymap('n', '<leader>f', ':GFiles<CR>', {})
-set_keymap('n', '<leader>b', ':Buffers<CR>', {})
--- }}}
-
--- IndentLine {{{
-g.indentLine_char = '│'
--- }}}
-
--- Vim Javascript {{{
-g.javascript_plugin_jsdoc = 1
--- }}}
-
--- Signify {{{
-o.updatetime = 100
-g.signify_sign_add = ''
-g.signify_sign_delete = ''
-g.signify_sign_change = ''
--- }}}
-
--- NERDTree {{{
-
-set_keymap('n', '<leader>t', ':NERDTreeToggle<CR>', { noremap = true })
-
--- Don't show list chars when on NERDTree
-cmd 'autocmd FileType nerdtree setlocal nolist'
-g.NERDTreeQuitOnOpen = 1
-
-
-cmd 'source $HOME/.config/nvim/coc.conf.vim'
-
--- Special chars: , │
--- }}}
-
--- }}}
-
 EOF
 
+" Matchup {{{
+let g:matchup_matchparen_offscreen = {'method': 'popup'}
+" }}}
+
 " Plugin Configs {{{
+set termguicolors " Some colorschemes require this to be set before
+colorscheme palenight
+set background=dark
+let g:airline_theme='palenight'
+
 " Airline {{{
 
 if !exists('g:airline_symbols')
@@ -133,6 +93,11 @@ let g:airline#extensions#hunks#enabled = 0 " Don't display the hunks info
 let g:airline#extensions#ale#enabled = 1
 
 " }}}
+
+" FZF {{{
+nmap <leader>f :GFiles<CR>
+nmap <leader>b :Buffers<CR>
+"}}}
 
 " Startify {{{
 nnoremap <leader>d :Startify<CR>
@@ -148,6 +113,34 @@ let g:startify_custom_header = [
       \ '   ╹ ┗┛   ┗┛    ╹   ╹ ╹',
       \ '   ',
       \ ]
+" }}}
+
+" IndentLine {{{
+let g:indentLine_char = '│'
+" }}}
+
+" Vim Javascript {{{
+let g:javascript_plugin_jsdoc = 1
+" }}}
+
+" Signify {{{
+set updatetime=100
+let g:signify_sign_add=''
+let g:signify_sign_delete=''
+let g:signify_sign_change=''
+" }}}
+
+" NERDTree {{{
+
+nnoremap <leader>t :NERDTreeToggle<CR>
+" Don't show list chars when on NERDTree
+autocmd FileType nerdtree setlocal nolist
+let g:NERDTreeQuitOnOpen = 1
+
+
+source $HOME/.config/nvim/coc.conf.vim
+
+" Special chars: , │
 " }}}
 
 " Disable arrow icons at the left side of folders for NERDTree.
