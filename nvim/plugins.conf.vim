@@ -1,9 +1,8 @@
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'ghifarit53/tokyonight-vim' " Theme
 Plug 'drewtempelmeyer/palenight.vim' " Theme
 Plug 'morhetz/gruvbox' " Theme
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'mhinz/vim-startify'
 Plug 'mhinz/vim-signify'
@@ -16,6 +15,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-endwise' " Help adding the correct 'closing' to a language construct
+Plug 'tpope/vim-rails'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'Yggdroot/indentLine'
@@ -23,33 +23,22 @@ Plug 'sheerun/vim-polyglot'
 Plug 'andymass/vim-matchup' " Show off screen matches and more
 Plug 'vim-scripts/AnsiEsc.vim' " Colorize Ansi output (console output)
 
-" Puting this before devicons to preserve order
-Plug 'preservim/nerdtree' |
-			\ Plug 'Xuyuanp/nerdtree-git-plugin' |
-			\ Plug 'ryanoasis/vim-devicons'
-Plug 'ryanoasis/vim-devicons' " The plugins that use this need to be loaded before
+Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Matchup {{{
 let g:matchup_matchparen_offscreen = {'method': 'popup'}
 " }}}
-
-" Javascript/React {{{
 " Plug 'yuezk/vim-js', { 'for': 'javascript' }
 " Plug 'HerringtonDarkholme/yats.vim', { 'for': 'javascript' }
 Plug 'MaxMEllon/vim-jsx-pretty', { 'for': 'javascript' } " Conflicts with VIM Polyglot
 Plug 'leafgarland/typescript-vim', { 'for': 'javascript' } " vim-jsx-typescript dep
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'peitalin/vim-jsx-typescript', { 'for': 'javascript' }
-" }}}
 
-" Ruby and Rails {{{
-Plug 'tpope/vim-rails'
-" }}}
-
-" Elixir {{{
 Plug 'elixir-editors/vim-elixir'
-" }}}
 
+Plug 'ryanoasis/vim-devicons' " The plugins that use this need to be loaded before
 call plug#end()
 
 " Plugin Configs {{{
@@ -99,22 +88,12 @@ let g:indentLine_char = '│'
 let g:javascript_plugin_jsdoc = 1
 " }}}
 
-" Signify {{{
-set updatetime=100
-let g:signify_sign_add=''
-let g:signify_sign_delete=''
-let g:signify_sign_change=''
-" }}}
-
 " NERDTree {{{
 
 nnoremap <leader>t :NERDTreeToggle<CR>
 " Don't show list chars when on NERDTree
 autocmd FileType nerdtree setlocal nolist
 let g:NERDTreeQuitOnOpen = 1
-
-
-source $HOME/.config/nvim/coc.conf.vim
 
 " Special chars: , │
 " }}}
@@ -126,7 +105,6 @@ let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
 highlight! link NERDTreeFlags NERDTreeDir
 autocmd FileType nerdtree setlocal signcolumn=no
 let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
-" }}}
 
 " DevIcons {{{
 
@@ -147,6 +125,10 @@ let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
     let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['erb'] = ''
     let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['jbuilder'] = ''
     let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['txt'] = ''
+" }}}
 
-    let g:webdevicons_enable_airline_statusline = 1
+" Coc {{{
+source $HOME/.config/nvim/coc.conf.vim
+" }}}
+
 " }}}
