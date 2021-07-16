@@ -169,7 +169,9 @@ let g:coc_global_extensions = [
       \'coc-tsserver',
       \'coc-marketplace',
       \'coc-lists',
-      \'coc-solargraph'
+      \'coc-solargraph',
+      \'coc-elixir',
+      \'coc-diagnostic'
       \]
 
 " }}}
