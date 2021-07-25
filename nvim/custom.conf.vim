@@ -9,8 +9,6 @@ nnoremap <C-l> <C-w>l
 " }}}
 
 inoremap kj <ESC>
-nnoremap <CR> za
-vnoremap <CR> za
 nnoremap <leader>v :vsplit $MYVIMRC<CR>
 nnoremap <leader><space> :noh<CR>
 cmap wq w
@@ -18,6 +16,10 @@ cmap wq w
 " TUI {{{
 set colorcolumn=+1
 set spelllang=en,es_mx
+" show signcolumn always
+set signcolumn=yes
+" Give more space for displaying messages.
+set cmdheight=2
 " Display non-visible characters like end of line, tabs, trailing spaces etc.
 set list
 " Configure how the non-visible chars will look like
