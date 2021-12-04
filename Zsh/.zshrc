@@ -259,12 +259,12 @@ ssh-add -A &> /dev/null
 alias dcomp="docker-compose"
 alias k="kubectl"
 
-function loadAsdf() {
-  if [ -f $(brew --prefix asdf)/asdf.sh ]; then
-    # ASDF version manager
-    . $(brew --prefix asdf)/asdf.sh
-  fi
-}
+if [ -f $(brew --prefix asdf)/asdf.sh ]; then
+  # ASDF version manager
+  . $(brew --prefix asdf)/asdf.sh
+else
+  echo 'asdf version manager not installed!!!'
+fi
 
 # If there is a file called .zshcontext on your home dir, load it. This file should hold
 # custom code that should be loaded in the current computer

@@ -1,16 +1,10 @@
 set number
 set relativenumber
 
-" Movement {{{
-nnoremap <C-j> <C-w>j
-nnoremap <C-h> <C-w>h
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-" }}}
-
 inoremap kj <ESC>
 nnoremap <leader>v :vsplit $MYVIMRC<CR>
 nnoremap <leader><space> :noh<CR>
+" Just avoid fat-finger w command
 cmap wq w
 
 " TUI {{{
