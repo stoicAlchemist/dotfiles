@@ -272,6 +272,7 @@ if [ -r $HOME/.zshcontext ]; then
   source $HOME/.zshcontext
 fi
 
-# For Zencoder
-export PATH="/usr/local/opt/postgresql@11/bin:$PATH"
-export PATH="/usr/local/opt/postgresql@11/bin:$PATH"
+# Zplug, plugin manager
+export ZPLUG_HOME=/opt/homebrew/opt/zplug
+source $ZPLUG_HOME/init.zsh
+
