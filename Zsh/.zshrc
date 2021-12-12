@@ -236,7 +236,11 @@ function loadNvm() {
 }
 
 # fzf for fuzzy finding
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+if [ -f ~/.fzf.zsh ]; then
+  source ~/.fzf.zsh
+else
+  echo 'FZF script for ZSH not found'
+fi
 # Use fd instead of find
 if (( $+commands[fd] )); then
   export FZF_DEFAULT_COMMAND='fd --type f'
@@ -263,7 +267,7 @@ if [ -f $(brew --prefix asdf)/asdf.sh ]; then
   # ASDF version manager
   . $(brew --prefix asdf)/asdf.sh
 else
-  echo 'asdf version manager not installed!!!'
+  echo 'WARNING!! asdf version manager not installed!!!'
 fi
 
 # If there is a file called .zshcontext on your home dir, load it. This file should hold
@@ -272,7 +276,14 @@ if [ -r $HOME/.zshcontext ]; then
   source $HOME/.zshcontext
 fi
 
-# Zplug, plugin manager
+# Zplug, plugin manager, set ZPLUG variables to check if it exists
 export ZPLUG_HOME=/opt/homebrew/opt/zplug
-source $ZPLUG_HOME/init.zsh
 
+if [ -r $ZPLUG_HOME/init.zsh ]; then
+  source $ZPLUG_HOME/init.zsh
+  # Zplug plugins
+  zplug "djui/alias-tips"
+  zplug load # Load all the plugins then
+else
+  echo 'WARNING!! ZPlug is not installed, plugins not loaded'
+fi

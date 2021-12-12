@@ -32,13 +32,23 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
   buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
+  -- Lspsaga keybindings
+  buf_set_keymap("n", "gr", "<cmd>Lspsaga rename<cr>", opts)
+  buf_set_keymap("n", "gx", "<cmd>Lspsaga code_action<cr>", opts)
+  buf_set_keymap("x", "gx", ":<c-u>Lspsaga range_code_action<cr>", opts)
+  buf_set_keymap("n", "K",  "<cmd>Lspsaga hover_doc<cr>", opts)
+  buf_set_keymap("n", "go", "<cmd>Lspsaga show_line_diagnostics<cr>", opts)
+  buf_set_keymap("n", "gj", "<cmd>Lspsaga diagnostic_jump_next<cr>", opts)
+  buf_set_keymap("n", "gk", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opts)
+  buf_set_keymap("n", "<C-u>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<cr>", opts)
+  buf_set_keymap("n", "<C-d>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<cr>", opts)
 end
 
 -- Use a loop to conveniently call 'setup' on multiple servers that don't need extra config and
 -- map buffer local keybindings when the language server attaches
 local servers = {
-  "solargraph",
-  "tsserver"
+  "solargraph", -- requires solargraph to be installed as well as rubocop via gem install
+  "tsserver" -- requires typescript and typescript-language-server to be installed via npm
 }
 
 -- Setup lspconfig.

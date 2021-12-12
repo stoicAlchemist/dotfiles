@@ -9,6 +9,7 @@ Plug 'bryanmylee/vim-colorscheme-icons' " DevIcons color in Startify
 
 " LSP **************
 Plug 'neovim/nvim-lspconfig'
+Plug 'tami5/lspsaga.nvim' " Fork
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 " cmp sources ******
 Plug 'hrsh7th/cmp-nvim-lsp'
@@ -141,28 +142,12 @@ let g:javascript_plugin_jsdoc = 1
 " LSP {{{
 luafile ~/.config/nvim/lua/lsp.conf.lua
 luafile ~/.config/nvim/lua/treesitter.conf.lua
+luafile ~/.config/nvim/lua/lspsaga.conf.lua
 
 " VSnip {{{
 set completeopt=menu,menuone,noselect
 
 luafile ~/.config/nvim/lua/nvim.cmp.conf.lua
-" }}}
-" LSPSaga {{{
-" luafile ~/.config/nvim/lua/lspsaga.conf.lua
-" nnoremap <silent>K :Lspsaga hover_doc<CR>
-" " scroll down hover doc or scroll in definition preview
-" nnoremap <silent> <C-f> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>
-" " scroll up hover doc
-" nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
-" " Signature help
-" nnoremap <silent> gs :Lspsaga signature_help<CR>
-" " Preview definition
-" nnoremap <silent> gd :Lspsaga preview_definition<CR>
-" " Show diagnostics
-" nnoremap <silent> <leader>cd :Lspsaga show_line_diagnostics<CR>
-" " Jump to diagnostic
-" nnoremap <silent> [e :Lspsaga diagnostic_jump_next<CR>
-" nnoremap <silent> ]e :Lspsaga diagnostic_jump_prev<CR>
 " }}}
 
 " Nvim autopairs {{{
