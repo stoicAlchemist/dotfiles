@@ -17,6 +17,24 @@ require'nvim-tree'.setup {
   hijack_cursor       = false,
   -- updates the root directory of the tree on `DirChanged` (when your run `:cd` usually) 
   update_cwd          = false,
+  actions = {
+    open_file = {
+      quit_on_open = true,
+      window_picker = {
+        enable = true,
+        exclude = {
+          filetype = {
+            "notify",
+            "packer",
+            "qf"
+          },
+          buftype = {
+            "terminal"
+          }
+        }
+      }
+    }
+  },
   -- show lsp diagnostics in the signcolumn
   diagnostics         = {
     enable = false,
@@ -61,7 +79,16 @@ require'nvim-tree'.setup {
       list = {}
     }
   },
-
+  renderer = {
+    indent_markers = {
+      enable = true,
+      icons = {
+        corner = "└ ",
+        edge = "│ ",
+        none = "  ",
+      }
+    }
+  },
   filters = {
     dotfiles = true,
     custom = {

@@ -277,7 +277,7 @@ if [ -r $HOME/.zshcontext ]; then
 fi
 
 # Zplug, plugin manager, set ZPLUG variables to check if it exists
-export ZPLUG_HOME=/opt/homebrew/opt/zplug
+export ZPLUG_HOME=$(brew --prefix zplug)
 
 if [ -r $ZPLUG_HOME/init.zsh ]; then
   source $ZPLUG_HOME/init.zsh
@@ -287,3 +287,9 @@ if [ -r $ZPLUG_HOME/init.zsh ]; then
 else
   echo 'WARNING!! ZPlug is not installed, plugins not loaded'
 fi
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/bmartinez/Packages/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/bmartinez/Packages/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/bmartinez/Packages/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/bmartinez/Packages/google-cloud-sdk/completion.zsh.inc'; fi
