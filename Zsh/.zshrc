@@ -146,21 +146,6 @@ then
   alias cat='bat'
 fi
 
-if [[ $OSTYPE == 'linux' ]]
-then
-  alias ls='ls -p --color=auto --group-directories-first'
-  alias ll='ls -lap --color=auto --group-directories-first'
-  # Archlinux
-  alias pin='sudo pacman -S'
-  alias prm='sudo pacman -Rsn'
-  alias pac='sudo pacman -U'
-  alias pss='pacman -Ss'
-  alias pup='sudo pacman -Syu'
-  alias pqi='pacman -Qi'
-  alias pqs='pacman -Qs'
-  alias psi='pacman -Si'
-fi
-
 alias dh='dirs -v' # Print Dir Stack
 alias suvim='sudo vim'
 alias sucat='sudo cat'
@@ -230,16 +215,11 @@ if [[ $TERM_PROGRAM == "iTerm.app" ]]; then
   . "${HOME}/.iterm2_shell_integration.zsh"
 fi
 
-function loadNvm() {
-  export NVM_DIR="$HOME/.nvm"
-  . "/usr/local/opt/nvm/nvm.sh"
-}
-
 # fzf for fuzzy finding
 if [ -f ~/.fzf.zsh ]; then
   source ~/.fzf.zsh
 else
-  echo 'FZF script for ZSH not found'
+  echo 'FZF script for ZSH not found, please install it visiting https://github.com/junegunn/fzf'
 fi
 # Use fd instead of find
 if (( $+commands[fd] )); then
