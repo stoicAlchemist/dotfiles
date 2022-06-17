@@ -237,7 +237,7 @@ function chpwd() {
 fpath=(~/.zsh/completion $fpath)
 
 # Mac needs this after a reboot
-ssh-add -A &> /dev/null
+ssh-add --apple-use-keychain &> /dev/null
 
 # Docker Compose
 alias dcomp="docker-compose"

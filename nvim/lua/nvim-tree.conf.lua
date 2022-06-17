@@ -9,8 +9,6 @@ require'nvim-tree'.setup {
   open_on_setup       = false,
   -- will not open on setup if the filetype is in this list
   ignore_ft_on_setup  = {},
-  -- closes neovim automatically when the tree is the last **WINDOW** in the view
-  auto_close          = false,
   -- opens the tree when changing/opening a new tab if the tree wasn't previously opened
   open_on_tab         = false,
   -- hijack the cursor in the tree to put it at the start of the filename
@@ -69,8 +67,6 @@ require'nvim-tree'.setup {
     width = 30,
     -- side of the tree, can be one of 'left' | 'right' | 'top' | 'bottom'
     side = 'left',
-    -- if true the tree will resize itself after opening a file
-    auto_resize = false,
     mappings = {
       -- custom only false will merge the list with the default mappings
       -- if true, it will only use your list to set the mappings
@@ -79,7 +75,53 @@ require'nvim-tree'.setup {
       list = {}
     }
   },
+  create_in_closed_folder = false,
+  respect_buf_cwd = true,
+  diagnostics = {
+    icons = {
+      hint = "",
+      info = "",
+      warning = "",
+      error = "",
+    }
+  },
   renderer = {
+    highlight_git = true,
+    highlight_opened_files = "icon",
+    root_folder_modifier = ":~",
+    special_files = { "README.md", "Makefile", "MAKEFILE" },
+    icons = {
+      padding = " ",
+      show = {
+        git = true,
+        folder = true,
+        file = true,
+        folder_arrow = true
+      },
+      glyphs = {
+        default= '',
+        symlink= '',
+        git= {
+          unstaged= "✗",
+          staged= "✓",
+          unmerged= "",
+          renamed= "➜",
+          untracked= "★",
+          deleted= "",
+          ignored= "◌"
+        },
+        folder= {
+          arrow_open= "",
+          arrow_closed= "",
+          default= "",
+          open= "",
+          empty= "",
+          empty_open= "",
+          symlink= "",
+          symlink_open= "",
+        }
+      }
+    },
     indent_markers = {
       enable = true,
       icons = {
