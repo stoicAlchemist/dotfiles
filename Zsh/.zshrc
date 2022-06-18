@@ -244,8 +244,9 @@ alias dcomp="docker-compose"
 alias k="kubectl"
 
 if [ -f $(brew --prefix asdf)/asdf.sh ]; then
+  export ASDF_DIR="$(brew --prefix asdf)/libexec"
   # ASDF version manager
-  . $(brew --prefix asdf)/asdf.sh
+  . $(brew --prefix asdf)/libexec/asdf.sh
 else
   echo 'WARNING!! asdf version manager not installed!!!'
 fi
@@ -268,8 +269,5 @@ else
   echo 'WARNING!! ZPlug is not installed, plugins not loaded'
 fi
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/bmartinez/Packages/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/bmartinez/Packages/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/bmartinez/Packages/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/bmartinez/Packages/google-cloud-sdk/completion.zsh.inc'; fi
+# Don't tell me to change behaviour on homebrew
+export HOMEBREW_NO_ENV_HINTS=true
