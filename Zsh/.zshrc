@@ -264,6 +264,15 @@ if [ -r $ZPLUG_HOME/init.zsh ]; then
   source $ZPLUG_HOME/init.zsh
   # Zplug plugins
   zplug "djui/alias-tips"
+  # Install plugins if there are plugins that have not been installed
+  if ! zplug check; then
+      printf "Install? [y/N]: "
+      if read -q; then
+          echo; zplug install
+      fi
+  fi
+
+  # Then, source plugins and add commands to $PATH
   zplug load # Load all the plugins then
 else
   echo 'WARNING!! ZPlug is not installed, plugins not loaded'

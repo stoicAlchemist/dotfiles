@@ -2,6 +2,7 @@ call plug#begin('~/.config/nvim/plugged')
 
 Plug 'joshdick/onedark.vim' " Theme
 Plug 'morhetz/gruvbox' " Theme
+Plug 'sainnhe/everforest' " Theme
 
 Plug 'junegunn/vim-easy-align' " Default mapping conflicts with cmp
 Plug 'mhinz/vim-startify'
@@ -84,7 +85,7 @@ call plug#end()
 set termguicolors " Some colorschemes require this to be set before
 set background=dark
 " let g:gruvbox_italic=1
-colorscheme gruvbox
+colorscheme everforest
 
 " vim-easy-align {{{
 vmap <leader><Enter> <Plug>(EasyAlign)
