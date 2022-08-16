@@ -3,6 +3,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'joshdick/onedark.vim' " Theme
 Plug 'morhetz/gruvbox' " Theme
 Plug 'sainnhe/everforest' " Theme
+Plug 'folke/tokyonight.nvim' " Theme
 
 Plug 'junegunn/vim-easy-align' " Default mapping conflicts with cmp
 Plug 'mhinz/vim-startify'
