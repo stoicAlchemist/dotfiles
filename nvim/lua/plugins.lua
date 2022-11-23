@@ -64,6 +64,7 @@ return require('packer').startup(function(use)
 
   use('thoughtbot/vim-rspec')
 
+  use('knsh14/vim-github-link')
   use('lewis6991/gitsigns.nvim') -- Requires Plenary
   use('lukas-reineke/indent-blankline.nvim')
   use('sheerun/vim-polyglot')
