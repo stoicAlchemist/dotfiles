@@ -1,8 +1,13 @@
 # Info: To set configurations for the completion system. This line is setting
 #       the filename module to the string passed
 # Help: man zshcompsys
+#
+
+# It's for when you run compinstall again. It lets compinstall find where it has written out zstyle statements for you last time. This way, you can run compinstall again to update them.
 zstyle :compinstall filename "${HOME}/.zshrc"
 
+ # autoload:  The autoload feature is not available in bash, but it is in ksh (korn shell) and zsh. On zsh see man zshbuiltins.
+# Functions are called in the same way as any other command. There can be a name conflict between a program and a function. What autoload does is to mark that name as being a function rather than an external program. The function has to be in a file on its own, with the filename the same as the function name. 
 autoload -Uz colors vcs_info #promptinit
 autoload -Uz compinit
 compinit
@@ -50,30 +55,48 @@ zle -N zle-line-init
 
 # Directory stack management
 setopt auto_pushd
-setopt correct_all # Syntax correct
+# Syntax correct
+setopt correct_all
 unsetopt correct_all
-setopt inc_append_history # Save command into history before executing
+# Save command into history before executing
+setopt inc_append_history
 setopt share_history
-setopt auto_menu # Automatically complete with first option on tab twice
-setopt always_to_end # Whenever autocomplete occurs, send cursor to the end
-setopt auto_list # Give options whenever autocomplete is ambiguos
-setopt auto_name_dirs # automaticaly expand variables on cd
+# Automatically complete with first option on tab twice
+setopt auto_menu
+# Whenever autocomplete occurs, send cursor to the end
+setopt always_to_end
+# Give options whenever autocomplete is ambiguos
+setopt auto_list
+# automaticaly expand variables on cd
+setopt auto_name_dirs
 setopt cdablevars
-setopt auto_remove_slash # remove slash if in autocomplete the user gives imputs
-setopt auto_param_slash # Add a slash if the autocomplete is a dir name
-setopt complete_aliases # Prevent alias internally substituted
-setopt glob_complete # Show options instead of expand on regex autocomplete
-setopt pushdminus # Use cd +2 instead of cd -2 on directory stack
+# remove slash if in autocomplete the user gives imputs
+setopt auto_remove_slash
+# Add a slash if the autocomplete is a dir name
+setopt auto_param_slash
+# Prevent alias internally substituted
+setopt complete_aliases
+# Show options instead of expand on regex autocomplete
+setopt glob_complete
+# Use cd +2 instead of cd -2 on directory stack
+setopt pushdminus
 setopt autocd
-setopt interactivecomments # Use comments with '#'
-setopt noclobber # Do not overwrite files unless >! is used
-setopt HIST_REDUCE_BLANKS # Save space by ignoring blanks on commands
-setopt HIST_IGNORE_SPACE # Ignore command on history if prepended with space
+# Use comments with '#'
+setopt interactivecomments
+# Do not overwrite files unless >! is used
+setopt noclobber
+# Save space by ignoring blanks on commands
+setopt HIST_REDUCE_BLANKS
+# Ignore command on history if prepended with space
+setopt HIST_IGNORE_SPACE
 setopt HIST_IGNORE_DUPS
 #setopt EXTENDEDGLOB
-setopt APPEND_HISTORY # Append history instead of replace
-setopt NOMATCH # Print error if no match found for autocomplete
-setopt NOTIFY # Notify status of jobs, no need to wait
+# Append history instead of replace
+setopt APPEND_HISTORY
+# Print error if no match found for autocomplete
+setopt NOMATCH
+# Notify status of jobs, no need to wait
+setopt NOTIFY
 
 # Turn VI mode on
 bindkey -v
