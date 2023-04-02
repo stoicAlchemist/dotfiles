@@ -1,83 +1,128 @@
--------------------- HELPERS ------------------------------
-
-local cmd = vim.cmd  -- to execute Vim commands e.g. cmd('pwd')
-local execute = vim.api.nvim_command
-local fn = vim.fn
-
-local install_path = fn.stdpath('data')..'/site/pack/packer/opt/packer.nvim'
-if fn.empty(fn.glob(install_path)) > 0 then
-  execute('!git clone https://github.com/wbthomason/packer.nvim '..install_path)
-  execute 'packadd packer.nvim'
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
+vim.opt.rtp:prepend(lazypath)
 
--- Required if opt is set to false
-cmd [[packadd packer.nvim]]
-
-return require('packer').startup(function(use)
-  -- Themes
-  use({'wbthomason/packer.nvim', opt = false})
-  use('folke/tokyonight.nvim')
-  use('joshdick/onedark.vim')
-  use('morhetz/gruvbox')
-  use('sainnhe/everforest')
-  use {
-    'goolord/alpha-nvim',
-    config = function ()
-      require'alpha'.setup(require'alpha.themes.startify'.config)
-    end
-  }
-
-  --------------------- LSP --------------------------
-  use('neovim/nvim-lspconfig')
-  use('tami5/lspsaga.nvim') -- lspsaga fork, pretty lsp notifications
-  use {
+require("lazy").setup(
+  {
+    {
+      'rmehri01/onenord.nvim',
+      config = function()
+        require('onenord').setup()
+      end
+    },
+    {
+      'goolord/alpha-nvim',
+      requires = { 'nvim-tree/nvim-web-devicons' },
+      config = function ()
+        require'alpha'.setup(require'alpha.themes.startify'.config)
+      end
+    },
+    'neovim/nvim-lspconfig', -- Has a config file
+    {
+      "glepnir/lspsaga.nvim",
+      event = "BufRead",
+      config = function()
+        require("lspsaga").setup()
+      end,
+      dependencies = {
+        {"nvim-tree/nvim-web-devicons"},
+        --Make sure you install markdown and markdown_inline parser on treesitter
+        {"nvim-treesitter/nvim-treesitter"}
+      }
+    },
+    {
       'nvim-treesitter/nvim-treesitter',
-      run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
-  }
+      run = function()
+        require('nvim-treesitter.install').update({ with_sync = true })
+      end,
+    },
+    {
+      'folke/noice.nvim',
+      dependencies = {
+        {'MunifTanjim/nui.nvim'},
+        {'rcarriga/nvim-notify'}
+      },
+      config = function()
+        require('noice').setup()
+        -- Remember to install Treesitter's VIM plugin
+      end
+    }, -- Fancy remplacement for messages, command and notifications
+    'MunifTanjim/nui.nvim', -- Required for fancy Noice plugin
+    {
+      'rcarriga/nvim-notify',
+      config = function()
+        vim.opt.termguicolors = true -- Required for opacity and animations
+        require('notify').setup({})
+        require('telescope').load_extension('notify')
+      end,
+      dependencies = {
+        {'nvim-telescope/telescope.nvim'} -- Be able to list and filter notifications
+      }
+    }, -- Pretty notifications for errors and messages
+    'hrsh7th/cmp-nvim-lsp',
+    'hrsh7th/cmp-buffer',
+    'hrsh7th/cmp-path',
+    'hrsh7th/cmp-cmdline',
+    'hrsh7th/nvim-cmp',
+    'nvim-lua/popup.nvim',
+    'nvim-lua/plenary.nvim', -- Also requirement for gitsigns
+    {
+      'nvim-telescope/telescope.nvim',
+      opts = {
+        pickers = {
+          find_files = {
+            prompt_prefix = " 🔍 "
+          }
+        }
+      }
+    },
+    {
+      'windwp/nvim-autopairs',
+      config = function()
+        require('nvim-autopairs').setup()
+      end
+    }, -- Auto-close parens
+    'tpope/vim-commentary',
+    'tpope/vim-repeat',
+    'tpope/vim-fugitive',
+    'tpope/vim-rhubarb',
+    'tpope/vim-surround',
+    'tpope/vim-endwise', -- Adding the correct 'closing' to a language construct
+    'tpope/vim-rails',
+    'thoughtbot/vim-rspec',
+    {
+      'lewis6991/gitsigns.nvim',
+      config = function()
+        require('gitsigns').setup()
+      end
+    }, -- Requires Plenary
+    'lukas-reineke/indent-blankline.nvim',
+    'sheerun/vim-polyglot',
+    'vim-scripts/AnsiEsc.vim',
+    'andymass/vim-matchup',
+    'elixir-editors/vim-elixir',
+    'Glench/Vim-Jinja2-Syntax',
+    'hoob3rt/lualine.nvim',
+    'nvim-tree/nvim-web-devicons', -- This is also used by Alpha dashboard
+    {
+      'kyazdani42/nvim-tree.lua',
+      config = function()
+        require('nvim-tree').setup({})
+      end
+    },
+  },
+  opts
+)
 
-  -- cmp sources, an autocomplete plugin
-  use('hrsh7th/cmp-nvim-lsp')
-  use('hrsh7th/cmp-buffer')
-  use('hrsh7th/cmp-path')
-  use('hrsh7th/cmp-cmdline')
-  use('hrsh7th/nvim-cmp')
-
-  -- vsnip sources for cmp and also vsnip, a snipets plugin
-  use('hrsh7th/cmp-vsnip')
-  use('hrsh7th/vim-vsnip')
-
-  ----------------- Telescope ------------------------------
-  use('nvim-lua/popup.nvim')
-  use('nvim-lua/plenary.nvim') -- Also requirement for gitsigns
-  use('nvim-telescope/telescope.nvim')
-
-  use('windwp/nvim-autopairs') -- Auto-close parens
-
-  ------------------ Tim Pope stuff --------------------------
-  use('tpope/vim-commentary')
-  use('tpope/vim-repeat')
-  use('tpope/vim-fugitive')
-  use('tpope/vim-rhubarb')
-  use('tpope/vim-surround')
-  use('tpope/vim-endwise') -- Adding the correct 'closing' to a language construct
-  use('tpope/vim-rails')
-
-  use('thoughtbot/vim-rspec')
-
-  use('lewis6991/gitsigns.nvim') -- Requires Plenary
-  use('lukas-reineke/indent-blankline.nvim')
-  use('sheerun/vim-polyglot')
-  use('vim-scripts/AnsiEsc.vim')
-
-  use('andymass/vim-matchup')
-  vim.g.matchup_matchparen_offscreen = { method = 'popup'}
-
-  use('elixir-editors/vim-elixir')
-  use('Glench/Vim-Jinja2-Syntax')
-  use('hoob3rt/lualine.nvim')
-
-  use('kyazdani42/nvim-web-devicons') -- This is also used by Alpha dashboard
-  use('kyazdani42/nvim-tree.lua')
-  vim.g.nvim_tree_refresh_wait = 500 -- 1000 by default, how often the tree can be refreshed
-end)
-
+vim.g.matchup_matchparen_offscreen = { method = 'popup'}
+vim.g.nvim_tree_refresh_wait = 500 -- Default is 1000, how often to refresh the tree
+vim.notify = require('notify') -- Use nvim-notify to show pretty notifications

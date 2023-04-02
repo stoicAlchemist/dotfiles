@@ -16,21 +16,17 @@ local on_attach = function(client, bufnr)
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   buf_map('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   buf_map('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_map('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  buf_map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_map('n', '<C-S-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_map('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  buf_map('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  buf_map('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  buf_map('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_map('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_map('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_map('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-  buf_map('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-  buf_map('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-  buf_map('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  buf_map("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  buf_map('n', 'gi', '<Cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  buf_map('n', '<C-S-k>', '<Cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  buf_map('n', '<space>wa', '<Cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+  buf_map('n', '<space>wr', '<Cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+  buf_map('n', '<space>wl', '<Cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  buf_map('n', '<space>D', '<Cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  buf_map('n', '<space>rn', '<Cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  buf_map('n', '<space>ca', '<Cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  buf_map('n', 'gr', '<Cmd>lua vim.lsp.buf.references()<CR>', opts)
+  buf_map('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
+  buf_map("n", "<space>f", "<cmd>lua vim.lsp.buf.format()<CR>", opts) -- Needs async = true somewhere... :shrug:
 
   -- Lspsaga keybindings
   buf_map("n", "gr", "<cmd>Lspsaga rename<cr>", opts)
@@ -40,8 +36,6 @@ local on_attach = function(client, bufnr)
   buf_map("n", "go", "<cmd>Lspsaga show_line_diagnostics<cr>", opts)
   buf_map("n", "gj", "<cmd>Lspsaga diagnostic_jump_next<cr>", opts)
   buf_map("n", "gk", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opts)
-  buf_map("n", "<C-u>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<cr>", opts)
-  buf_map("n", "<C-d>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<cr>", opts)
 end
 
 -- Use a loop to conveniently call 'setup' on multiple servers that don't need extra config and
@@ -52,7 +46,7 @@ local servers = {
 }
 
 -- Setup lspconfig.
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
@@ -86,6 +80,4 @@ nvim_lsp.elixirls.setup({
   }
 })
 
--- Init LSP Saga
-require('lspsaga').init_lsp_saga()
 return {}

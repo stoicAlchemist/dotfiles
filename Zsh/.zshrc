@@ -243,7 +243,7 @@ ssh-add --apple-use-keychain &> /dev/null
 alias dcomp="docker-compose"
 alias k="kubectl"
 
-if [ -f $(brew --prefix asdf)/asdf.sh ]; then
+if [ -f $(brew --prefix asdf)/libexec/asdf.sh ]; then
   export ASDF_DIR="$(brew --prefix asdf)/libexec"
   # ASDF version manager
   . $(brew --prefix asdf)/libexec/asdf.sh

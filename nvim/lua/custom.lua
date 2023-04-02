@@ -66,7 +66,3 @@ g.autoread = true
 g.termguicolors = true
 g.background = 'dark'
 
--- Commands
-local cmd = vim.cmd
-cmd("colorscheme tokyonight")
-
