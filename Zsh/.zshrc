@@ -25,7 +25,7 @@ zstyle ':vcs_info:*:*' stagedstr \
 zstyle ':vcs_info:*:*' unstagedstr \
   "%F{154}"
 zstyle ':vcs_info:*' formats \
-  '%F{063}%r %F{142}שׂ%f %F{030}%b%f %m%u%c '
+  '%F{063}%r %F{150}%f %F{030}%b%f %m%u%c '
 #zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r'
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' check-for-changes true
