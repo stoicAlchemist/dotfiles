@@ -13,15 +13,21 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup(
   {
+    -- {
+    --   'rmehri01/onenord.nvim',
+    --   config = function()
+    --     require('onenord').setup()
+    --   end
+    -- },
     {
-      'rmehri01/onenord.nvim',
-      config = function()
-        require('onenord').setup()
-      end
+      "folke/tokyonight.nvim",
+      lazy = false,
+      priority = 1000,
+      opts = {},
     },
     {
       'goolord/alpha-nvim',
-      requires = { 'nvim-tree/nvim-web-devicons' },
+      dependencies = { 'nvim-tree/nvim-web-devicons' },
       config = function ()
         require'alpha'.setup(require'alpha.themes.startify'.config)
       end
@@ -41,7 +47,7 @@ require("lazy").setup(
     },
     {
       'nvim-treesitter/nvim-treesitter',
-      run = function()
+      config = function()
         require('nvim-treesitter.install').update({ with_sync = true })
       end,
     },
@@ -81,6 +87,12 @@ require("lazy").setup(
         pickers = {
           find_files = {
             prompt_prefix = " 🔍 "
+          }
+        },
+        defaults = {
+          file_ignore_patterns = {
+            'regression',
+            '*.log'
           }
         }
       }
@@ -126,3 +138,4 @@ require("lazy").setup(
 vim.g.matchup_matchparen_offscreen = { method = 'popup'}
 vim.g.nvim_tree_refresh_wait = 500 -- Default is 1000, how often to refresh the tree
 vim.notify = require('notify') -- Use nvim-notify to show pretty notifications
+vim.cmd[[colorscheme tokyonight-moon]]

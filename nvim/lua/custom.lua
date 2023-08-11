@@ -64,5 +64,5 @@ g.noswapfile = true
 g.autowrite = true
 g.autoread = true
 g.termguicolors = true
-g.background = 'dark'
+-- g.background = 'dark'
 
